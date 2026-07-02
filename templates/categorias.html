@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorias de Ativos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Categorias de Ativos Computacionais</h1>
+    <div class="voltar">
+        <a href="/">← Voltar para a Home</a>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nome da Categoria</th>
+            <th>Sigla</th>
+            <th>Qtd. de Equipamentos</th>
+        </tr>
+        {% for categoria in categorias %}
+            <tr>
+                <td>{{ categoria.codigo }}</td>
+                <td>{{ categoria.nome }}</td>
+                <td>{{ categoria.sigla }}</td>
+                <td>{{ categoria.itens|length }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
