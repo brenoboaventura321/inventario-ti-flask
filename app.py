@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+
 from config import Config
 from models import db, Categoria, Item
 
@@ -52,3 +53,21 @@ def relatorio_categorias():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/editar-item/<int:patrimonio>", methods=["GET", "POST"])
+def editar_item(patrimonio):
+    item = Item.query.get_or_404(patrimonio)
+    categorias = Categoria.query.all()
+    
+    if request.method == "POST":
+        # Captura os novos dados preenchidos no formulário
+        item.nome = request.form["nome"]
+        item.valor = float(request.form["valor"]) if request.form["valor"] else None
+        item.responsavel_email = request.form["responsavel_email"]
+        item.localizacao = request.form["localizacao"]
+        item.codigo_cat = int(request.form["codigo_cat"])
+        db.session.commit()
+        
+        return redirect("/itens")
+        
+    return render_template("editar_item.html", item=item, categorias=categorias)
