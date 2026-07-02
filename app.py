@@ -60,7 +60,6 @@ def editar_item(patrimonio):
     categorias = Categoria.query.all()
     
     if request.method == "POST":
-        # Captura os novos dados preenchidos no formulário
         item.nome = request.form["nome"]
         item.valor = float(request.form["valor"]) if request.form["valor"] else None
         item.responsavel_email = request.form["responsavel_email"]
@@ -71,3 +70,31 @@ def editar_item(patrimonio):
         return redirect("/itens")
         
     return render_template("editar_item.html", item=item, categorias=categorias)
+
+@app.route("/novo-item", methods=["GET", "POST"])
+def novo_item():
+    categorias = Categoria.query.all()
+    
+    if request.method == "POST":
+        patrimonio = int(request.form["patrimonio"])
+        nome = request.form["nome"]
+        valor = float(request.form["valor"]) if request.form["valor"] else None
+        responsavel_email = request.form["responsavel_email"]
+        localizacao = request.form["localizacao"]
+        codigo_cat = int(request.form["codigo_cat"])
+        
+        item_novo = Item(
+            patrimonio=patrimonio,
+            nome=nome,
+            valor=valor,
+            responsavel_email=responsavel_email,
+            localizacao=localizacao,
+            codigo_cat=codigo_cat
+        )
+        
+        db.session.add(item_novo)
+        db.session.commit()
+        
+        return redirect("/itens")
+        
+    return render_template("novo_item.html", categorias=categorias)
