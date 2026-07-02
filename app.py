@@ -98,3 +98,12 @@ def novo_item():
         return redirect("/itens")
         
     return render_template("novo_item.html", categorias=categorias)
+
+@app.route("/deletar-item/<int:patrimonio>", methods=["GET", "POST"])
+def deletar_item(patrimonio):
+    item = Item.query.get_or_404(patrimonio)
+    
+    db.session.delete(item)
+    db.session.commit()
+    
+    return redirect("/itens")
