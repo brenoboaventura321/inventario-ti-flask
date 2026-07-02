@@ -20,7 +20,8 @@
             <th>Responsável</th>
             <th>Localização Física</th>
             <th>Categoria</th>
-        </tr>
+            <th>Ações</th> </tr>
+        
         {% for item in itens %}
             <tr>
                 <td>{{ item.patrimonio }}</td>
@@ -29,6 +30,9 @@
                 <td>{{ item.responsavel_email }}</td>
                 <td>{{ item.localizacao }}</td>
                 <td>{{ item.categoria.nome }}</td>
+                <td>
+                    <a href="/editar-item/{{ item.patrimonio }}" style="color: #e67e22; font-weight: bold; text-decoration: none;">Editar</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
