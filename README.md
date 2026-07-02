@@ -3,13 +3,12 @@
 Projeto Final desenvolvido para a disciplina de Banco de Dados do 2º Período do curso Tecnólogo em IA do Piauí Instituto de Tecnologia (PIT).
 
 ## 👥 Componentes do Grupo
-* Integrante 1 (Nome Completo)
-* Integrante 2 (Nome Completo)
-* Integrante 3 (Nome Completo)
+* 1- Breno Aguiar
+* 2- Abraham Vasquez
+* 3- Hyara Beatriz
 
 ## 🔗 Links do Projeto
-* **Link de Produção (Render):** [INSIRA_AQUI_O_LINK_DO_RENDER]
-* **Link do Repositório (GitHub):** [INSIRA_AQUI_O_LINK_DO_GITHUB]
+* **Link de Produção (Render):** [(https://inventario-ti-flask.onrender.com/)]
 
 ## 🛠️ Tecnologias Utilizadas
 * **Back-end:** Python & Flask Framework
